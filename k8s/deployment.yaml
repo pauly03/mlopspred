@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: placementapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mldeployment
+  template:
+    metadata:
+      labels:
+        app: mldeployment
+    spec:
+      containers:
+      - name: ml-app
+        image: gcr.io/project-placement/myapp:v1
+        ports:
+        - containerPort: 8080
